@@ -1,0 +1,45 @@
+OPTION, PSDUMPFREQ=1000;
+OPTION, STATDUMPFREQ=1;
+OPTION, AUTOPHASE=0;
+OPTION, VERSION=10900;
+
+TITLE, STRING="Minimal drift without self-fields";
+
+REAL n_particles=1000;
+REAL bunch_charge=1e-12;
+
+// EMASS, Edes, and P0 are in GeV-based OPAL units.
+REAL Edes=1e-3;
+REAL gamma=(Edes+EMASS)/EMASS;
+REAL beta=sqrt(1.0-1.0/(gamma*gamma));
+REAL P0=gamma*beta*EMASS;
+
+VALUE, {Edes, P0};
+
+D1: DRIFT, L=0.5, ELEMEDGE=0.0;
+DriftLine: LINE=(D1);
+
+FSNone: FIELDSOLVER, TYPE=NONE,
+    NX=8, NY=8, NZ=8,
+    PARFFTX=TRUE, PARFFTY=TRUE, PARFFTZ=TRUE,
+    BCFFTX=OPEN, BCFFTY=OPEN, BCFFTZ=OPEN;
+
+Dist: DISTRIBUTION, TYPE=GAUSS,
+    NPARTDIST=n_particles,
+    SIGMAX=2e-4, SIGMAY=2e-4, SIGMAZ=2e-4,
+    SIGMAPX=1e-5, SIGMAPY=1e-5, SIGMAPZ=1e-5;
+
+Source: EMISSIONSOURCE, DISTRIBUTION=Dist;
+Sources: EMISSIONSOURCELIST=(Source);
+
+Beam1: BEAM, PARTICLE=ELECTRON,
+    PC=P0, NALLOC=n_particles,
+    BCHARGE=bunch_charge, CHARGE=-1,
+    SOURCES=Sources;
+
+TRACK, LINE=DriftLine, BEAM=Beam1,
+    DT={1e-11}, MAXSTEPS={1000}, ZSTOP={0.5};
+  RUN, METHOD=PARALLEL, FIELDSOLVER=FSNone;
+ENDTRACK;
+
+QUIT;

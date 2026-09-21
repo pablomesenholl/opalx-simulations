@@ -1,0 +1,16 @@
+# OPALX generated output
+*.h5
+*.stat
+*.out
+timing.dat
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editor / OS files
+.vscode/
+.DS_Store
