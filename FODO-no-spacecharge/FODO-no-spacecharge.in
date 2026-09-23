@@ -1,0 +1,87 @@
+OPTION, PSDUMPFREQ=1000;
+OPTION, STATDUMPFREQ=1;
+OPTION, AUTOPHASE=0;
+OPTION, VERSION=10900;
+
+TITLE, STRING="FODO cell with no spacecharge";
+
+//-----------------------------------------------
+// Parameters
+//-----------------------------------------------
+
+
+REAL n_particles=1000;		// test choice
+REAL bunch_charge=1e-9;		// 1 nC
+
+REAL Edes=0.250;		// 250 MeV = 0.250 GeV kinetic energy
+REAL gamma=(Edes+EMASS)/EMASS;
+REAL beta=sqrt(1.0-1.0/(gamma*gamma));
+REAL P0=gamma*beta*EMASS;
+
+VALUE, {Edes, P0};
+
+REAL LQ = 0.5;			// quadrupole length in m
+REAL LD = 0.5;			// drift length in m
+REAL K1 = 1.5;			// quad strength in m^-2
+
+// distr params
+REAL sigma_x = 1e-3;		// 1 mm
+REAL sigma_y = 1e-3;
+REAL sigma_z = 5e-3;		// 5mm
+
+//-----------------------------------------------
+// Lattice elements
+//-----------------------------------------------
+
+D1: DRIFT, L=0.5, ELEMEDGE=0.0;
+
+//-----------------------------------------------
+// Beamline
+//-----------------------------------------------
+
+DriftLine: LINE=(D1);
+
+//-----------------------------------------------
+// Field solver (no space charge)
+//-----------------------------------------------
+
+FSNone: FIELDSOLVER, TYPE=NONE,
+    NX=8, NY=8, NZ=8,
+    PARFFTX=TRUE, PARFFTY=TRUE, PARFFTZ=TRUE,
+    BCFFTX=OPEN, BCFFTY=OPEN, BCFFTZ=OPEN;
+
+//-----------------------------------------------
+//Initial particle distribution
+//-----------------------------------------------
+
+Dist: DISTRIBUTION, TYPE=GAUSS,
+    NPARTDIST=n_particles,
+    SIGMAX=2e-4, SIGMAY=2e-4, SIGMAZ=2e-4,
+    SIGMAPX=1e-5, SIGMAPY=1e-5, SIGMAPZ=1e-5;
+
+//-----------------------------------------------
+// Emissionsource
+//-----------------------------------------------
+
+Source: EMISSIONSOURCE, DISTRIBUTION=Dist;
+Sources: EMISSIONSOURCELIST=(Source);
+
+//-----------------------------------------------
+// Initial beam
+//-----------------------------------------------
+
+Beam1: BEAM, PARTICLE=ELECTRON,
+    PC=P0, NALLOC=n_particles,
+    BCHARGE=bunch_charge, CHARGE=-1,
+    SOURCES=Sources;
+
+//-----------------------------------------------
+// Tracking
+//-----------------------------------------------
+
+TRACK, LINE=DriftLine, BEAM=Beam1,
+    DT={1e-11}, MAXSTEPS={1000}, ZSTOP={0.5};
+  RUN, METHOD=PARALLEL, FIELDSOLVER=FSNone;
+ENDTRACK;
+
+QUIT;
