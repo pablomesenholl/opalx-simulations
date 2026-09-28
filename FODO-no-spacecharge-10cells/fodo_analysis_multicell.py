@@ -191,6 +191,111 @@ def periodic_twiss(M: np.ndarray) -> tuple[float, float, float, float]:
     return beta, alpha, gamma, mu
 
 
+
+def transfer_matrix_from_start(
+    s: float, params: dict[str, float], plane: str
+) -> np.ndarray:
+    """Transfer matrix from the lattice entrance s=0 to an arbitrary s."""
+    Lcell = 2.0 * (params["LQ"] + params["LD"])
+    M_cell = transfer_matrix_to_s(Lcell, params, plane)
+
+    # Split s into complete cells plus the position inside the current cell.
+    n_complete = int(np.floor(s / Lcell))
+    local_s = s - n_complete * Lcell
+
+    # Avoid floating-point values such as local_s ~= Lcell at exact boundaries.
+    if np.isclose(local_s, Lcell, atol=1e-12):
+        n_complete += 1
+        local_s = 0.0
+    elif np.isclose(local_s, 0.0, atol=1e-12):
+        local_s = 0.0
+
+    return (
+        transfer_matrix_to_s(local_s, params, plane)
+        @ np.linalg.matrix_power(M_cell, n_complete)
+    )
+
+
+def analytic_from_initial_opalx(
+    stat,
+    params: dict[str, float],
+    points_per_cell: int = 500,
+) -> dict[str, np.ndarray | float]:
+    """
+    Propagate the actual initial OPALX transverse covariance analytically.
+
+    The first .stat row supplies sigma_x/y, sigma_px/py and the x-px/y-py
+    correlation coefficients. OPALX normalized momenta are converted to
+    paraxial slopes with x' ~= px / pz_ref and y' ~= py / pz_ref.
+    """
+    Lcell = 2.0 * (params["LQ"] + params["LD"])
+    n_cells = int(round(params.get("n_cells", 1.0)))
+    Ltotal = n_cells * Lcell
+
+    s0 = float(stat["s"][0])
+    beta_gamma_ref = abs(float(stat["ref_pz"][0]))
+
+    if beta_gamma_ref <= 0.0:
+        raise ValueError("Initial OPALX ref_pz must be nonzero.")
+
+    npoints = n_cells * points_per_cell + 1
+    s_grid = np.linspace(s0, Ltotal, npoints)
+
+    result: dict[str, np.ndarray | float] = {
+        "s": s_grid,
+        "s0": s0,
+        "Lcell": Lcell,
+        "Ltotal": Ltotal,
+        "n_cells": float(n_cells),
+        "beta_gamma_ref": beta_gamma_ref,
+    }
+
+    for plane in ("x", "y"):
+        M_cell = transfer_matrix_to_s(Lcell, params, plane)
+        beta0, alpha0, gamma0, mu = periodic_twiss(M_cell)
+
+        sigma_u = float(stat[f"rms_{plane}"][0])
+        sigma_p = float(stat[f"rms_p{plane}"][0])
+        corr = float(stat["xpx" if plane == "x" else "ypy"][0])
+
+        # OPALX stores p_x/(mc) and p_y/(mc). For this straight, paraxial
+        # benchmark x' ~= p_x/p_z, with p_z/(mc) = beta_gamma_ref.
+        sigma_uprime = sigma_p / beta_gamma_ref
+        cov_u_uprime = corr * sigma_u * sigma_uprime
+
+        Sigma0 = np.array(
+            [
+                [sigma_u**2, cov_u_uprime],
+                [cov_u_uprime, sigma_uprime**2],
+            ]
+        )
+
+        G0 = transfer_matrix_from_start(s0, params, plane)
+        G0_inv = np.linalg.inv(G0)
+
+        sigmas = np.empty_like(s_grid)
+        correlations = np.empty_like(s_grid)
+
+        for i, s in enumerate(s_grid):
+            G = transfer_matrix_from_start(float(s), params, plane)
+            M = G @ G0_inv
+            Sigma = M @ Sigma0 @ M.T
+
+            sigmas[i] = np.sqrt(Sigma[0, 0])
+            correlations[i] = Sigma[0, 1] / np.sqrt(
+                Sigma[0, 0] * Sigma[1, 1]
+            )
+
+        result[f"sigma_{plane}"] = sigmas
+        result[f"corr_{plane}"] = correlations
+        result[f"beta0_{plane}"] = beta0
+        result[f"alpha0_{plane}"] = alpha0
+        result[f"gamma0_{plane}"] = gamma0
+        result[f"mu_{plane}"] = mu
+
+    return result
+
+
 def analytic_matched_model(
     params: dict[str, float], points_per_cell: int = 500
 ) -> dict[str, np.ndarray | float]:
@@ -318,21 +423,21 @@ def plot_envelopes(
     ax.plot(s, 1e3 * stat["rms_x"], label=r"OPALX $\sigma_x$")
     ax.plot(s, 1e3 * stat["rms_y"], label=r"OPALX $\sigma_y$")
 
-    if theory is not None:
-        ax.plot(
-            theory["s"],
-            1e3 * theory["sigma_x"],
-            "--",
-            linewidth=1.5,
-            label=r"analytic $\sigma_x$",
-        )
-        ax.plot(
-            theory["s"],
-            1e3 * theory["sigma_y"],
-            "--",
-            linewidth=1.5,
-            label=r"analytic $\sigma_y$",
-        )
+#    if theory is not None:
+#        ax.plot(
+#            theory["s"],
+#            1e3 * theory["sigma_x"],
+#            "--",
+#            linewidth=1.5,
+#            label=r"analytic from initial OPALX $\sigma_x$",
+#        )
+#        ax.plot(
+#            theory["s"],
+#            1e3 * theory["sigma_y"],
+#            "--",
+#            linewidth=1.5,
+#            label=r"analytic from initial OPALX $\sigma_y$",
+#        )
 
     lattice_markers(ax, LQ, LD, n_cells)
     ax.set_xlabel("Path length s [m]")
@@ -375,21 +480,22 @@ def plot_correlations(
     ax.plot(s, stat["xpx"], label=r"OPALX $r_{x,p_x}$")
     ax.plot(s, stat["ypy"], label=r"OPALX $r_{y,p_y}$")
 
-    if theory is not None:
-        ax.plot(
-            theory["s"],
-            theory["corr_x"],
-            "--",
-            linewidth=1.5,
-            label=r"analytic $r_x$",
-        )
-        ax.plot(
-            theory["s"],
-            theory["corr_y"],
-            "--",
-            linewidth=1.5,
-            label=r"analytic $r_y$",
-        )
+    
+#    if theory is not None:
+#        ax.plot(
+#            theory["s"],
+#            theory["corr_x"],
+#            "--",
+#            linewidth=1.5,
+#            label=r"analytic from initial OPALX $r_x$",
+#        )
+#        ax.plot(
+#            theory["s"],
+#            theory["corr_y"],
+#            "--",
+#            linewidth=1.5,
+#            label=r"analytic from initial OPALX $r_y$",
+#        )
 
     lattice_markers(ax, LQ, LD, n_cells)
     ax.set_xlabel("Path length s [m]")
@@ -518,9 +624,17 @@ def print_analytic_validation(
     print(f"full-run r_y closure:     {closure_ry:+.6f}")
     print()
     print(
-        "Note: the analytic curves use the exact requested RMS sizes from the "
-        "input file, whereas OPALX tracks a finite random macroparticle sample. "
-        "Small percent-level offsets are therefore normal."
+        f"analytic propagation initialized from first OPALX .stat row: "
+        f"s={theory['s0']:.6f} m"
+    )
+    print(
+        f"reference beta*gamma from OPALX ref_pz: "
+        f"{theory['beta_gamma_ref']:.9f}"
+    )
+    print(
+        "The analytic curves therefore use the covariance of the actual "
+        "finite macroparticle sample rather than the nominal requested "
+        "distribution covariance."
     )
 
 
@@ -612,7 +726,7 @@ def main():
     n_cells = int(round(params["n_cells"]))
     Lcell = 2.0 * (LQ + LD)
 
-    theory = analytic_matched_model(params)
+    theory = analytic_from_initial_opalx(stat, params)
 
     plot_envelopes(
         stat, args.output, LQ, LD, theory, n_cells=n_cells
@@ -653,9 +767,11 @@ constant because this benchmark uses a linear lattice with space
 charge disabled.
 
 The analytic curves use exact hard-edge thick-lens transfer matrices
-for the drifts and quadrupoles. The phase advance printed above is the
-one-cell phase advance; the total phase advance is its accumulated
-value over all {n_cells} cells.
+for the drifts and quadrupoles, initialized with the actual transverse
+covariance measured in the first OPALX .stat row. This separates
+finite-sample initialization mismatch from subsequent transport error.
+The phase advance printed above is the one-cell phase advance; the total
+phase advance is its accumulated value over all {n_cells} cells.
 
 The cell-boundary table uses the .stat row nearest to each nominal
 boundary. These rows are generally slightly displaced from the exact

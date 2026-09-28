@@ -18,15 +18,17 @@ phase advance y: 35.641346 deg/cell
 total phase advance x: 356.413463 deg
 total phase advance y: 356.413463 deg
 
-OPALX-vs-analytic envelope RMS error x: 0.807 %
-OPALX-vs-analytic envelope RMS error y: 1.265 %
+OPALX-vs-analytic envelope RMS error x: 0.270 %
+OPALX-vs-analytic envelope RMS error y: 0.172 %
 
 full-run sigma_x closure: -0.1350 %
 full-run sigma_y closure: +0.1998 %
 full-run r_x closure:     +0.002795
 full-run r_y closure:     -0.005567
 
-Note: the analytic curves use the exact requested RMS sizes from the input file, whereas OPALX tracks a finite random macroparticle sample. Small percent-level offsets are therefore normal.
+analytic propagation initialized from first OPALX .stat row: s=0.001838 m
+reference beta*gamma from OPALX ref_pz: 0.777102739
+The analytic curves therefore use the covariance of the actual finite macroparticle sample rather than the nominal requested distribution covariance.
 
 Cell-boundary statistics
 ------------------------
@@ -57,9 +59,11 @@ constant because this benchmark uses a linear lattice with space
 charge disabled.
 
 The analytic curves use exact hard-edge thick-lens transfer matrices
-for the drifts and quadrupoles. The phase advance printed above is the
-one-cell phase advance; the total phase advance is its accumulated
-value over all 10 cells.
+for the drifts and quadrupoles, initialized with the actual transverse
+covariance measured in the first OPALX .stat row. This separates
+finite-sample initialization mismatch from subsequent transport error.
+The phase advance printed above is the one-cell phase advance; the total
+phase advance is its accumulated value over all 10 cells.
 
 The cell-boundary table uses the .stat row nearest to each nominal
 boundary. These rows are generally slightly displaced from the exact
