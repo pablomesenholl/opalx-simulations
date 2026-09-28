@@ -26,6 +26,8 @@ REAL LD = 0.5;			// drift length in m
 REAL k1 = 1.5;			// quad strength in m^-2
 
 REAL Lcell = 2.0*(LQ+LD);	//total FODO cell length = 2m
+REAL n_cells = 10;          //number of consecutive FODO n_cells
+REAL Ltotal = n_cells*Lcell;//full length of beamline
 
 // initial RMS beam sizes
 REAL sigma_x = 1e-3;		// 1 mm
@@ -164,16 +166,14 @@ VALUE, {
 // Lattice elements
 //-----------------------------------------------
 
-QF: QUADRUPOLE, L=LQ, ELEMEDGE=0.0, K1=k1;
-D1: DRIFT, L=LD, ELEMEDGE=LQ;
-QD: QUADRUPOLE, L=LQ, ELEMEDGE=LQ+LD, K1=-k1;
-D2: DRIFT, L=LD, ELEMEDGE=2.0*LQ + LD;
+CALL, FILE = "fodo_10cells.inc"; //include lattice from external file
+VALUE, {Lcell, n_cells, Ltotal};  //diagnostics
 
 //-----------------------------------------------
 // Beamline
 //-----------------------------------------------
 
-FODOcell: LINE=(QF, D1, QD, D2);
+//directly defined through the CALL function of the external lattice
 
 //-----------------------------------------------
 // Field solver (no space charge)
@@ -229,8 +229,8 @@ Beam1: BEAM, PARTICLE=PROTON,
 // Tracking
 //-----------------------------------------------
 
-TRACK, LINE=FODOcell, BEAM=Beam1,
-    DT={1e-11}, MAXSTEPS={2000}, ZSTOP={Lcell};
+TRACK, LINE=FODO10, BEAM=Beam1,
+    DT={1e-11}, MAXSTEPS={20000}, ZSTOP={Ltotal};
   RUN, METHOD=PARALLEL, FIELDSOLVER=FSNone;
 ENDTRACK;
 
