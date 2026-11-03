@@ -1,0 +1,14 @@
+{
+  "kinetic_energy_MeV": 2.5,
+  "rms_emittance_x_m_rad": 3e-6,
+  "rms_emittance_y_m_rad": 3e-6,
+  "cells": 6,
+  "target_vertical_shifts": [0.0, -0.1, -0.2, -0.3],
+  "elements": [
+    {"name": "B1", "length_m": 1.0471975511965976, "kx_m2": 0.25, "ky_m2": 0.0},
+    {"name": "D1", "length_m": 1.0, "kx_m2": 0.0, "ky_m2": 0.0},
+    {"name": "Q", "length_m": 0.2, "kx_m2": -2.84, "ky_m2": 2.84},
+    {"name": "D2", "length_m": 1.0, "kx_m2": 0.0, "ky_m2": 0.0},
+    {"name": "B2", "length_m": 1.0471975511965976, "kx_m2": 0.25, "ky_m2": 0.0}
+  ]
+}

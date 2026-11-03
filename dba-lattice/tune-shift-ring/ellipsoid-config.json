@@ -1,0 +1,9 @@
+{
+  "longitudinal_semiaxis_m": 0.05,
+  "rms_relative_momentum_spread": 0.0001,
+  "target_vertical_shift": -0.2,
+  "rf_harmonic": 20,
+  "turns": 1,
+  "samples_per_element": 20,
+  "maximum_spatial_semiaxis_m": 0.2
+}

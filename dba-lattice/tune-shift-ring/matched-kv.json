@@ -1,0 +1,83 @@
+{
+  "seed": 546544,
+  "macroparticles": 65536,
+  "longitudinal_slices": 1024,
+  "distribution": "KV S3 shell, signed/cyclic quiet sampling; not waterbag",
+  "current_A": 0.010399311499494903,
+  "perveance": 1.7048939963469436e-06,
+  "circumference_m": 25.766370614359168,
+  "number_line_density_per_m": 2971798882.4922867,
+  "ring_charge_C": 1.2268262448092359e-08,
+  "protons_in_ring": 76572471397.63467,
+  "initial_edge_envelope": [
+    0.012085619047152519,
+    8.840960741158175e-16,
+    0.004960604555269736,
+    2.6450312641516823e-15
+  ],
+  "bare_tunes": [
+    0.7701075691274597,
+    1.6895363970202835
+  ],
+  "matched_tunes": [
+    0.4840051995847331,
+    1.4895363970202449
+  ],
+  "section_moments": {
+    "centroid": [
+      -2.117582368135751e-22,
+      -1.0422475718168149e-22,
+      0.0,
+      0.0
+    ],
+    "covariance": [
+      [
+        3.651554693822395e-05,
+        2.6712116050583112e-18,
+        -3.995912148316876e-24,
+        2.727347648095039e-25
+      ],
+      [
+        2.6712116050583112e-18,
+        2.464703600147621e-07,
+        -2.426794277806703e-25,
+        -4.4430748036461284e-26
+      ],
+      [
+        -3.995912148316876e-24,
+        -2.426794277806703e-25,
+        6.151899388440715e-06,
+        3.2802389132840258e-18
+      ],
+      [
+        2.727347648095039e-25,
+        -4.4430748036461284e-26,
+        3.2802389132840258e-18,
+        1.4629628073747118e-06
+      ]
+    ],
+    "rms_emittance_x_m_rad": 2.9999999999999997e-06,
+    "rms_emittance_y_m_rad": 2.9999999999999997e-06
+  },
+  "max_section_shell_error": 8.881784197001252e-16,
+  "max_ring_shell_error": 9.992007221626409e-16,
+  "max_normalized_momentum_error": 2.7755575615628914e-17,
+  "section_file_scope": "Transverse observation plane at z=0; NOT a charged 3D bunch",
+  "ring_file_scope": "Local curvilinear coasting coordinates; NOT a Cartesian OPALX FROMFILE input",
+  "longitudinal_assumption": "Periodic uniform coasting density; finite stratified quadrature in s",
+  "opalx_limitation": "Current field solver rejects mixed open/open/periodic boundaries",
+  "sha256": {
+    "kv-section.txt": "932b405a17d2d7936a78d725e0021f8aebd2bc70243d4bf9558f80d54f0e183f",
+    "kv-ring.csv": "2af36f0f028f078f1a77228a5683944d2cd04f45a36123514dc36e3b95c20fe6"
+  },
+  "provenance": {
+    "revision": "fd675e885aeb3eaf33acfcf341c1b8779cb81495",
+    "command": [
+      "/Users/adelmann/.venv-h6/bin/python",
+      "sandbox/tune-shift-ring/analysis/prepare_kv.py"
+    ],
+    "mpi_ranks": 1,
+    "execution": "serial Python; no OPALX/PIC run",
+    "config_sha256": "ba2cf6780d10083e7a1911a0cbb747e5321c410d75647b7a606667d255f4c124"
+  }
+}

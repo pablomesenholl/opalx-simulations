@@ -1,0 +1,67 @@
+{
+  "scope": "Local straight-slice coasting KV reference; not an OPALX solver result",
+  "finite_segment_charge": "Q_segment_C=line_charge_C_per_m*segment_length_m",
+  "longitudinal_field": "zero for longitudinally uniform coasting beam",
+  "targets": [
+    {
+      "current_mA": 0.0,
+      "ring_charge_nC": 0.0,
+      "qx": 0.7701075691274597,
+      "qy": 1.6895363970202835,
+      "dqx": 0.0,
+      "dqy": 0.0,
+      "edge_a_m": 0.00963627895013725,
+      "edge_b_m": 0.0045944952183990286,
+      "lab_Ex_over_x_V_per_m2": 0.0,
+      "lab_Ey_over_y_V_per_m2": 0.0,
+      "net_force_over_electric_force": 0.9946922782077533,
+      "sc_defocusing_x_per_m2": 0.0,
+      "sc_defocusing_y_per_m2": 0.0
+    },
+    {
+      "current_mA": 4.748769550191376,
+      "ring_charge_nC": 5.602212333969124,
+      "qx": 0.6239401113299683,
+      "qy": 1.5895363970113405,
+      "dqx": -0.1461674577974914,
+      "dqy": -0.10000000000894294,
+      "edge_a_m": 0.010669745200050184,
+      "edge_b_m": 0.004771027790331936,
+      "lab_Ex_over_x_V_per_m2": 47444.3637425942,
+      "lab_Ey_over_y_V_per_m2": 106102.77167904741,
+      "net_force_over_electric_force": 0.9946922782077533,
+      "sc_defocusing_x_per_m2": 0.009451066044370331,
+      "sc_defocusing_y_per_m2": 0.02113600485971217
+    },
+    {
+      "current_mA": 10.39931149951235,
+      "ring_charge_nC": 12.26826244811294,
+      "qx": 0.48400519958440746,
+      "qy": 1.4895363970199307,
+      "dqx": -0.28610236954305224,
+      "dqy": -0.20000000000035278,
+      "edge_a_m": 0.012085619047156734,
+      "edge_b_m": 0.004960604555271206,
+      "lab_Ex_over_x_V_per_m2": 83087.20011464019,
+      "lab_Ey_over_y_V_per_m2": 202426.98991464343,
+      "net_force_over_electric_force": 0.9946922782077533,
+      "sc_defocusing_x_per_m2": 0.016551230826609063,
+      "sc_defocusing_y_per_m2": 0.04032409120767298
+    },
+    {
+      "current_mA": 17.402677046361696,
+      "ring_charge_nC": 20.530263884731962,
+      "qx": 0.3592522513378798,
+      "qy": 1.389536397020695,
+      "dqx": -0.4108553177895799,
+      "dqy": -0.2999999999995884,
+      "edge_a_m": 0.014007404173810566,
+      "edge_b_m": 0.005166353279118264,
+      "lab_Ex_over_x_V_per_m2": 106654.15767410738,
+      "lab_Ey_over_y_V_per_m2": 289168.74488565995,
+      "net_force_over_electric_force": 0.9946922782077533,
+      "sc_defocusing_x_per_m2": 0.02124584267908995,
+      "sc_defocusing_y_per_m2": 0.05760332082245798
+    }
+  ]
+}

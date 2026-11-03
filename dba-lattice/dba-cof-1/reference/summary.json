@@ -1,0 +1,11 @@
+{
+  "model": "exact hard-edge linear optics; no OPALX tracking",
+  "selected_k1_m2": 2.84,
+  "qx_principal": 0.2298924308671466,
+  "qy_principal": 0.31046360297978914,
+  "circumference_m": 25.766370614359175,
+  "periodic_dispersion_m": 9.337460094228828,
+  "periodic_dispersion_slope": 2.2204460492503106e-16,
+  "stable_samples": 822,
+  "determinant_error": 2.6645352591003757e-15
+}

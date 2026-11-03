@@ -1,0 +1,26 @@
+{
+  "revision": "2db119cdad48b46f66b5e97701ebc145c9d5c8cb",
+  "command": [
+    "/Users/adelmann/git/opalx/sandbox/Regression-Tests/tune-shift-ring/analysis/run_model.py"
+  ],
+  "python": "3.11.15 (main, Mar  7 2026, 04:57:07) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "mpi_ranks": 1,
+  "execution": "serial Python, MPI not invoked",
+  "config_sha256": "ba2cf6780d10083e7a1911a0cbb747e5321c410d75647b7a606667d255f4c124"
+}
+{
+  "circumference_m": 25.766370614359168,
+  "beta_rel": 0.07285411307707136,
+  "gamma": 1.002664472308372,
+  "rigidity_T_m": 0.2286218827524972,
+  "bare_tunes": [
+    0.7701075691274597,
+    1.6895363970202835
+  ],
+  "max_tune_change_tighter_integration": 5.311084905201824e-12,
+  "max_scaled_closure_error": 4.874660640932888e-13,
+  "max_envelope_multiplier": 1.0697607554792101,
+  "scope": "Coasting KV, zero momentum spread, direct transverse space charge; no OPALX run"
+}

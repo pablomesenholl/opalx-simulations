@@ -1,0 +1,21 @@
+{
+  "source_sha256": {
+    "TeX/make_figures.py": "25a1bb4067feef66640deeac040ae8a92915ed35c2f9a758e0144ba6c93ebccf",
+    "model/machine.json": "dbb7ca03a7ec857cf53b8c5a1735fb5073489d91e5a4dd5966eaaa8808b04362",
+    "REFERENCE_RUNS.json": "b67b5a4fedfba2cda6e0d2480ac6bf55afd1530d219782520e900c65ef5fa425",
+    "tune-shift-ring/results/analytic-20261030T230956Z-vnve9na0/current_scan.csv": "975b5bb30455b044e0803ed2055b8f317582432521c43dbcc828d335e63513db",
+    "tune-shift-ring/results/analytic-20261030T230956Z-vnve9na0/targets.csv": "2cf18af1b8bc74bb1c58fc05bcdae21695fe4c55316580233ae93ee91137d48e",
+    "tune-shift-ring/results/analytic-20261030T230956Z-vnve9na0/summary.json": "6e916034e1b3d91bd354add9157feef336b943f2eb97835dcfaca8d113234418"
+  },
+  "scan_points": 33,
+  "unstable_samples": 7,
+  "envelope_unity_plot_atol": 1e-08,
+  "classification_note": "Plot labels only: unity roundoff <1.5e-12, first unstable excess >5e-3; no solver tolerance changed.",
+  "last_stable_sample_charge_nC": 15.739868978294504,
+  "first_unstable_sample_charge_nC": 16.424211107785574,
+  "max_charge_conversion_error_nC": 7.105427357601002e-15,
+  "scope": "Saved analytic KV reference; no new simulation; magnet widths schematic.",
+  "matplotlib": "3.10.9",
+  "numpy": "2.4.6",
+  "pandas": "3.0.3"
+}

@@ -3,7 +3,7 @@
 Analyze an OPALX no-space-charge FODO run.
 
 Usage:
-    python fodo_analysis.py run.stat run.h5 --input FODO-no-spacecharge.in --output plots
+    python3 fodo_analysis.py FODO-no-spacecharge.stat FODO-no-spacecharge.h5 --input FODO-no-spacecharge.in --output plots
 """
 
 from __future__ import annotations

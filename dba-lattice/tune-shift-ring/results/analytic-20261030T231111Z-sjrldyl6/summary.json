@@ -1,0 +1,14 @@
+{
+  "circumference_m": 26.236495210087448,
+  "beta_rel": 0.07285411307707136,
+  "gamma": 1.002664472308372,
+  "rigidity_T_m": 0.2286218827524972,
+  "bare_tunes": [
+    0.7999999999944221,
+    1.69999999999991
+  ],
+  "max_tune_change_tighter_integration": 5.496103572255606e-12,
+  "max_scaled_closure_error": 7.664323795552181e-13,
+  "max_envelope_multiplier": 1.0684843144188574,
+  "scope": "Coasting KV, zero momentum spread, direct transverse space charge; no OPALX run"
+}
