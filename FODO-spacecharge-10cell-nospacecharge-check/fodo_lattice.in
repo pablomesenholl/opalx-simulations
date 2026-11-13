@@ -1,0 +1,80 @@
+// Generated OPALX FODO lattice; do not edit by hand.
+// Required definitions in caller: LQ, LD, k1, Lcell.
+// Each period is QF -> D1 -> QD -> D2 (length Lcell).
+// This file must NOT contain QUIT or ENDTRACK.
+// Physical aperture: none.
+
+REAL n_periods=10;
+
+// Period 1
+QF_01: QUADRUPOLE, L=LQ, ELEMEDGE=(0*Lcell), K1=k1;
+D1_01: DRIFT, L=LD, ELEMEDGE=(0*Lcell)+LQ;
+QD_01: QUADRUPOLE, L=LQ, ELEMEDGE=(0*Lcell)+LQ+LD, K1=-k1;
+D2_01: DRIFT, L=LD, ELEMEDGE=(0*Lcell)+2*LQ+LD;
+
+// Period 2
+QF_02: QUADRUPOLE, L=LQ, ELEMEDGE=(1*Lcell), K1=k1;
+D1_02: DRIFT, L=LD, ELEMEDGE=(1*Lcell)+LQ;
+QD_02: QUADRUPOLE, L=LQ, ELEMEDGE=(1*Lcell)+LQ+LD, K1=-k1;
+D2_02: DRIFT, L=LD, ELEMEDGE=(1*Lcell)+2*LQ+LD;
+
+// Period 3
+QF_03: QUADRUPOLE, L=LQ, ELEMEDGE=(2*Lcell), K1=k1;
+D1_03: DRIFT, L=LD, ELEMEDGE=(2*Lcell)+LQ;
+QD_03: QUADRUPOLE, L=LQ, ELEMEDGE=(2*Lcell)+LQ+LD, K1=-k1;
+D2_03: DRIFT, L=LD, ELEMEDGE=(2*Lcell)+2*LQ+LD;
+
+// Period 4
+QF_04: QUADRUPOLE, L=LQ, ELEMEDGE=(3*Lcell), K1=k1;
+D1_04: DRIFT, L=LD, ELEMEDGE=(3*Lcell)+LQ;
+QD_04: QUADRUPOLE, L=LQ, ELEMEDGE=(3*Lcell)+LQ+LD, K1=-k1;
+D2_04: DRIFT, L=LD, ELEMEDGE=(3*Lcell)+2*LQ+LD;
+
+// Period 5
+QF_05: QUADRUPOLE, L=LQ, ELEMEDGE=(4*Lcell), K1=k1;
+D1_05: DRIFT, L=LD, ELEMEDGE=(4*Lcell)+LQ;
+QD_05: QUADRUPOLE, L=LQ, ELEMEDGE=(4*Lcell)+LQ+LD, K1=-k1;
+D2_05: DRIFT, L=LD, ELEMEDGE=(4*Lcell)+2*LQ+LD;
+
+// Period 6
+QF_06: QUADRUPOLE, L=LQ, ELEMEDGE=(5*Lcell), K1=k1;
+D1_06: DRIFT, L=LD, ELEMEDGE=(5*Lcell)+LQ;
+QD_06: QUADRUPOLE, L=LQ, ELEMEDGE=(5*Lcell)+LQ+LD, K1=-k1;
+D2_06: DRIFT, L=LD, ELEMEDGE=(5*Lcell)+2*LQ+LD;
+
+// Period 7
+QF_07: QUADRUPOLE, L=LQ, ELEMEDGE=(6*Lcell), K1=k1;
+D1_07: DRIFT, L=LD, ELEMEDGE=(6*Lcell)+LQ;
+QD_07: QUADRUPOLE, L=LQ, ELEMEDGE=(6*Lcell)+LQ+LD, K1=-k1;
+D2_07: DRIFT, L=LD, ELEMEDGE=(6*Lcell)+2*LQ+LD;
+
+// Period 8
+QF_08: QUADRUPOLE, L=LQ, ELEMEDGE=(7*Lcell), K1=k1;
+D1_08: DRIFT, L=LD, ELEMEDGE=(7*Lcell)+LQ;
+QD_08: QUADRUPOLE, L=LQ, ELEMEDGE=(7*Lcell)+LQ+LD, K1=-k1;
+D2_08: DRIFT, L=LD, ELEMEDGE=(7*Lcell)+2*LQ+LD;
+
+// Period 9
+QF_09: QUADRUPOLE, L=LQ, ELEMEDGE=(8*Lcell), K1=k1;
+D1_09: DRIFT, L=LD, ELEMEDGE=(8*Lcell)+LQ;
+QD_09: QUADRUPOLE, L=LQ, ELEMEDGE=(8*Lcell)+LQ+LD, K1=-k1;
+D2_09: DRIFT, L=LD, ELEMEDGE=(8*Lcell)+2*LQ+LD;
+
+// Period 10
+QF_10: QUADRUPOLE, L=LQ, ELEMEDGE=(9*Lcell), K1=k1;
+D1_10: DRIFT, L=LD, ELEMEDGE=(9*Lcell)+LQ;
+QD_10: QUADRUPOLE, L=LQ, ELEMEDGE=(9*Lcell)+LQ+LD, K1=-k1;
+D2_10: DRIFT, L=LD, ELEMEDGE=(9*Lcell)+2*LQ+LD;
+
+FODO_LATTICE: LINE=(
+    QF_01, D1_01, QD_01, D2_01,
+    QF_02, D1_02, QD_02, D2_02,
+    QF_03, D1_03, QD_03, D2_03,
+    QF_04, D1_04, QD_04, D2_04,
+    QF_05, D1_05, QD_05, D2_05,
+    QF_06, D1_06, QD_06, D2_06,
+    QF_07, D1_07, QD_07, D2_07,
+    QF_08, D1_08, QD_08, D2_08,
+    QF_09, D1_09, QD_09, D2_09,
+    QF_10, D1_10, QD_10, D2_10
+);

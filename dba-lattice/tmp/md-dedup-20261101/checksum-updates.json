@@ -1,0 +1,21 @@
+[
+  {
+    "manifest": "tune-shift-ring/CHECKSUMS.sha256",
+    "entries": [
+      "./ELLIPSOID.md",
+      "./README.md"
+    ]
+  },
+  {
+    "manifest": "dba-ring-cof-1/CHECKSUMS.sha256",
+    "entries": [
+      "./README.md"
+    ]
+  },
+  {
+    "manifest": "dba-cof-1/CHECKSUMS.sha256",
+    "entries": [
+      "README.md"
+    ]
+  }
+]

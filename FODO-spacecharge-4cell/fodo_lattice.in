@@ -1,0 +1,38 @@
+// Generated OPALX FODO lattice; do not edit by hand.
+// Required definitions in caller: LQ, LD, k1, Lcell.
+// Each period is QF -> D1 -> QD -> D2 (length Lcell).
+// This file must NOT contain QUIT or ENDTRACK.
+// Physical aperture: none.
+
+REAL n_periods=4;
+
+// Period 1
+QF_01: QUADRUPOLE, L=LQ, ELEMEDGE=(0*Lcell), K1=k1;
+D1_01: DRIFT, L=LD, ELEMEDGE=(0*Lcell)+LQ;
+QD_01: QUADRUPOLE, L=LQ, ELEMEDGE=(0*Lcell)+LQ+LD, K1=-k1;
+D2_01: DRIFT, L=LD, ELEMEDGE=(0*Lcell)+2*LQ+LD;
+
+// Period 2
+QF_02: QUADRUPOLE, L=LQ, ELEMEDGE=(1*Lcell), K1=k1;
+D1_02: DRIFT, L=LD, ELEMEDGE=(1*Lcell)+LQ;
+QD_02: QUADRUPOLE, L=LQ, ELEMEDGE=(1*Lcell)+LQ+LD, K1=-k1;
+D2_02: DRIFT, L=LD, ELEMEDGE=(1*Lcell)+2*LQ+LD;
+
+// Period 3
+QF_03: QUADRUPOLE, L=LQ, ELEMEDGE=(2*Lcell), K1=k1;
+D1_03: DRIFT, L=LD, ELEMEDGE=(2*Lcell)+LQ;
+QD_03: QUADRUPOLE, L=LQ, ELEMEDGE=(2*Lcell)+LQ+LD, K1=-k1;
+D2_03: DRIFT, L=LD, ELEMEDGE=(2*Lcell)+2*LQ+LD;
+
+// Period 4
+QF_04: QUADRUPOLE, L=LQ, ELEMEDGE=(3*Lcell), K1=k1;
+D1_04: DRIFT, L=LD, ELEMEDGE=(3*Lcell)+LQ;
+QD_04: QUADRUPOLE, L=LQ, ELEMEDGE=(3*Lcell)+LQ+LD, K1=-k1;
+D2_04: DRIFT, L=LD, ELEMEDGE=(3*Lcell)+2*LQ+LD;
+
+FODO_LATTICE: LINE=(
+    QF_01, D1_01, QD_01, D2_01,
+    QF_02, D1_02, QD_02, D2_02,
+    QF_03, D1_03, QD_03, D2_03,
+    QF_04, D1_04, QD_04, D2_04
+);

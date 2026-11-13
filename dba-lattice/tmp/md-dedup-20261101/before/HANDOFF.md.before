@@ -1,0 +1,86 @@
+# DBA lattice development state — 2026-10-31
+
+Goals: (1) independent coasting KV tune-shift reference for FFT2D5; (2) complete quadratic canonical cell Hamiltonian for AI reconstruction, then optimization (user selected this sequence).
+
+Delivered:
+- TeX/main.tex (Hamiltonian section): 6D canonical variables, quadratic external Hamiltonian, dispersion/longitudinal signs, exact maps, interior KV collective potential and physical assumptions.
+- model/cell.json, machine.py, machine.json: baseline spec and expanded 30-element ring.
+- model/optimize.py and designs/demo-qx0.8-qy1.7/: deterministic local two-knob example with full machine and compatible KV config. Illustrative targets explicitly labeled; circumference may change.
+- TeX/main.tex (FFT2D5 benchmark section): charge/line-density normalization, fields/force reference and staged solver validation.
+- TeX/main.tex (AI design section): reconstruction and optimization tasks with evaluator criteria; no claim of autonomous AI design demonstrated.
+- Modified only copied tune-shift-ring/analysis/run_model.py: explicit line/ring charge columns, fft2d5_reference.json exports and standalone source-hash provenance when Git is absent.
+- REFERENCE_RUNS.json points to freshly reproduced baseline and optimized scans. README.md documents commands and scope.
+- tests/test_machine.py adds 7 physics/artifact checks.
+
+Validation with ~/.venv-h6:
+- 7 new machine/design/artifact tests pass; 10 existing KV model/distribution tests pass.
+- Baseline and optimized full scans complete; tighter relative integration tolerance changes tunes by at most 5.32e-12 and 5.50e-12 respectively.
+- Baseline closure 4.39e-15 m; symplectic residual 7.55e-15. All 30 placements match the independent copied proton OPALX deck within 2e-14.
+- Independently converted exported lab E fields through the Lorentz force to KV defocusing coefficients at all operating points in both scans.
+- Reviewed runner diff against original and new model/test/doc sources. No tolerance changes to existing numerical code.
+
+Results:
+- Baseline full tunes (0.770107569133,1.689536397020); main Delta Qy=-0.2 at 10.399311 mA (12.26826245 nC whole ring).
+- Illustrative optimized full tunes (0.8,1.7), circumference 26.23649521009 m; rematched Delta Qy=-0.2 at 10.019502 mA.
+- Delta Qy=-0.3 cases remain envelope-unstable stress points.
+
+Limitations/next step:
+- Serial analytic/model validation only; no OPALX FFT2D5 or MPI runs. Next: build a correctly normalized solver run with zero-current orbit/tune controls, field checks and verified longitudinal seam handling before multi-turn SC tune comparison.
+- Hamiltonian complete only within quadratic ideal hard-edge model; KV collective potential applies inside the beam, delta=0 transverse coasting approximation. Finite-curvature/amplitude OPALX model differences require assessment.
+- Local optimizer is a deterministic evaluator, not a global design search; cell tune branch validated near baseline only. Circumference is not fixed.
+- Historical copied diagnostic files retain old paths and results. LaTeX search abandoned per user request.
+- No production OPALX source changed or repository push performed.
+
+Documentation consolidation — 2026-11-01:
+- Moved the contents of MODEL.md, FFT2D5_BENCHMARK.md and AI_DESIGN_TASK.md into TeX/main.tex, a single standalone LaTeX document.
+- Typeset seven equation blocks; retained all three sections, tables, physical assumptions, references and validation instructions.
+- Updated README and machine.py documentation pointers; removed the three superseded Markdown sources after successful compilation.
+- Desktop LaTeX compiler returned success. No physics or numerical code changed.
+
+Scientific-writing and LaTeX rewrite — 2026-11-01 (in progress):
+- Apply manuscript-writing-review skill and conservative LOCAL_EXTENSION.md. Rewrite exposition and TeX formatting; preserve scientific claims, mathematical definitions, numbers and scope.
+- Original source saved to tmp/scientific-rewrite-20261101/main.before.tex. An independent agent reviews clarity and retention requirements without edits.
+- Replace conversion artifacts with proper inline/display mathematics, consistent units, numbered equations/cross-references and readable tables. Compile with the desktop LaTeX tool, render the PDF for visual QA, and check numerical/claim retention before delivery.
+
+Scientific-writing rewrite completed — 2026-11-01:
+- Rewrote TeX/main.tex as a single scientific technical note with abstract,
+  coherent section order, numbered equations, cross-references, consistent
+  symbols/units, self-contained table captions and a reference list.
+- Repaired Markdown-to-TeX corruption in momentum conversion, matrix maps,
+  beam radii, tune integrals and the force-gradient normalization.
+- Retained scientific scope, original reference links, all operating-point
+  values, the interior/coasting KV restrictions, tune-branch qualifications,
+  envelope instability, and uncompleted FFT2D5/MPI validation status.
+- Independent editorial review found no substantive omission or overstatement;
+  applied its two small retention fixes. Full change report and source backup:
+  tmp/scientific-rewrite-20261101/writing-review.txt and main.before.tex.
+- Desktop compiler succeeded. Local PDF compile has no warnings or unresolved
+  references; all seven rendered pages were visually inspected. Checked 23
+  critical decimal values and all labels/references. Hashes: checks.json.
+- Final source and compiled PDF: TeX/main.tex and TeX/main.pdf. No model/solver
+  code or numerical tolerances changed; no physics or MPI tests required.
+
+Figures — 2026-11-01 (in progress):
+- Add reproducible ring-layout and analytic KV tune-shift-versus-total-ring-charge figures to TeX/main.tex.
+- Sources: model/machine.json and baseline current_scan.csv/targets.csv selected through REFERENCE_RUNS.json. Use ~/.venv-h6, pandas and Matplotlib; output vector PDF plus PNG previews under TeX/figures/.
+- Preserve physical geometry at equal scale, mark beam direction and schematic magnet widths, and distinguish envelope-unstable samples without claiming an exact instability threshold.
+- Independently checked all 33 charge conversions and cell/element counts. Compile and visually inspect final document before delivery.
+
+Figures completed — 2026-11-01:
+- Added TeX/figures/ring-lattice.pdf and kv-tune-shift-charge.pdf, with 300 dpi
+  PNG previews, and embedded them in TeX/main.tex with self-contained captions
+  and cross-references. Generated geometry uses equal laboratory X,Z scales,
+  all 30 elements, cell labels, beam direction and schematic magnet widths.
+- Reproducible script: TeX/make_figures.py. It uses pandas/Matplotlib in
+  ~/.venv-h6 and records source hashes/versions/checks in figures/provenance.json.
+- All 33 saved baseline charges verified against I*C/(beta*c), maximum error
+  7.11e-15 nC. The principal point is 12.268262448 nC. Seven sampled points
+  have envelope instability; plot crosses distinguish these on both curves.
+  The scan brackets onset at 15.739868978 to 16.424211108 nC, not an exact threshold.
+- Plot-only unity tolerance 1e-8 separates <1.5e-12 integration noise from
+  >5e-3 observed multiplier growth. No solver/model tolerance changed.
+- Desktop compilation passed; final local build has no warnings, undefined
+  references, or overfull/underfull boxes. Both standalone figures and all
+  nine document pages were rendered and visually checked.
+- Final document: TeX/main.tex and TeX/main.pdf. Build/check metadata and source
+  backup: tmp/figures-20261101/. No physics simulations or MPI runs performed.

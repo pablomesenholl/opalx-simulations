@@ -1,0 +1,89 @@
+Scientific writing and LaTeX revision — 1 November 2026
+
+Scope
+Rewrite TeX/main.tex using manuscript-writing-review/SKILL.md and its
+LOCAL_EXTENSION.md. Original source: main.before.tex in this directory.
+An independent editorial reviewer checked the original and the rewrite.
+This is a language/notation/typesetting revision, not a new physics review.
+
+Summary
+The original combined three notes without a continuous scientific narrative.
+Markdown conversion damaged several inline formulas. The rewrite orders the
+material as purpose/scope, external machine, KV model, solver comparison,
+AI design task, and implementation/status. It retains every model limitation,
+all operating-point values, and the distinction between analytic self-fields
+and numerical envelope matching. The reviewer found no substantive omission
+or overstatement; two small retention fixes were applied (code notation alias
+and the explicit requirement for absolute tune errors).
+
+Pass 1 — Clutter and argument flow
+MAJOR, original lines 244–249:
+Original: 'The first deliverable is an independent reference, not yet an
+end-to-end OPALX FFT2D5 validation.'
+Replacement (section 4.3): 'The independent reference is available, but
+end-to-end OPALX FFT2D5 tracking remains to be validated.'
+Reason: identifies the result and validation status without the undefined
+'first deliverable'. Section 1 and the abstract introduce the two purposes.
+
+Pass 2 — Voice and verbs
+No standalone passive-voice issue required a scientific claim change.
+The reconstruction and validation instructions now name their actor or
+use parallel imperative constructions. Clear existing statements were kept.
+
+Pass 3 — Sentence architecture and equations as prose
+CRITICAL, original lines 99–101:
+Original: 'P\_x/(mc)=beta0\emph{gamma0}px'.
+Replacement (equation 2.4): P_x/(mc)=beta_0 gamma_0 p_x, with proper math markup.
+Reason: removes accidental Markdown emphasis and restores multiplication.
+
+MAJOR, original lines 122–129:
+Original: 'H is piecewise constant in s through its coefficients'.
+Replacement (section 2.2): 'The coefficients are constant within each element.'
+Reason: distinguishes constant coefficients from conserved Hamiltonian values;
+retains local autonomous conservation and the absence of global conservation.
+
+CRITICAL, original lines 125–128:
+Original: 'exp(L\emph{J}G)' and text-form matrix products.
+Replacement (equations 2.9–2.10): u'=JG u, M(L)=exp(LJG), with the original
+ordered cell-map product and sixth power for the ring.
+Reason: repairs notation and exposes map composition order.
+
+CRITICAL, original lines 174–175 and 218–219:
+Original: 'a=2\emph{sigma\_x, b=2}sigma\_y' and
+'Qx=6/(2\emph{pi)}integral\_cell Ex/a\^{}2 ds'.
+Replacement (equations 3.1 and 3.7): a=2 sigma_x, b=2 sigma_y, and explicit
+horizontal and vertical phase integrals with the original edge emittances.
+Reason: restores the beam-size definitions and incoherent tune formulas.
+
+CRITICAL, original lines 295–299:
+Original: 'e\emph{(E\_x/x)/(p0}beta0\emph{c}gamma0\^{}2)=2*K/[a*(a+b)]'.
+Replacement (equation 4.4): e(E_x/x)/(p_0 beta_0 c gamma_0^2)=2K/[a(a+b)].
+Reason: restores the normalization relation connecting lab fields to focusing.
+
+All displayed equations now have grammatical introductions and punctuation;
+numbered labels connect definitions, methods, tables and validation stages.
+
+Pass 4 — Terminology and symbols
+MAJOR, original lines 413–421:
+Original: 'Allow the physical quadrupole coefficient and both equal drift
+lengths to vary.'
+Replacement (section 5.2): 'The two free parameters are the physical quadrupole
+coefficient and the common length of the two drifts.'
+Reason: makes the two independent design parameters unambiguous.
+
+KV, rms, RF, MPI and PIC are defined in the text. The Ex/Ey mapping to edge
+emittances is retained. Canonical momentum, electric field and edge emittance
+use distinct mathematical notation. Tables have self-contained captions.
+
+Pass 5 — Numbers and citations
+The 23 critical decimal values recorded in checks.json remain unchanged.
+Scientific notation is typeset conventionally; emittance and tune-comparison
+tolerance retain the original values. Both original reference links remain.
+References were reformatted, not independently reverified or augmented.
+No methods, results, numerical tolerances or physics assumptions were added.
+
+Validation
+Seven PDF pages visually inspected. No overfull/underfull boxes, undefined
+references, LaTeX warnings or duplicate labels in the final local compilation.
+Desktop LaTeX compiler also succeeded. Model and solver code were not edited;
+physics/MPI tests were not repeated for this document-only revision.

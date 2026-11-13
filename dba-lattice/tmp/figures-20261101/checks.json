@@ -1,0 +1,10 @@
+{
+  "figures": 2,
+  "pages_visually_checked": 9,
+  "compile_warnings": 0,
+  "scan_points": 33,
+  "envelope_unstable_samples": 7,
+  "max_charge_conversion_error_nC": 7.105427357601002e-15,
+  "source_sha256": "4aba000a2b37c88975d056e1779438dfef48d122173f9ad1edf3cda0009eabf4",
+  "pdf_sha256": "984f8a0f030fe1ec2356ad7dc68fb281e322dcfdef5c98a3995d0eed46be424c"
+}

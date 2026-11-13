@@ -1,0 +1,122 @@
+{
+  "README.md": {
+    "bytes": 3255,
+    "sha256": "270d3c3ee65bc7cf9a4d6cb8551b80950427842c09f745be2a685e02d5bb7460"
+  },
+  "HANDOFF.md": {
+    "bytes": 7635,
+    "sha256": "40237847c39b7c7e27a7e6d86d657049035662e85f10272410b3ebb0f56f350a"
+  },
+  "tune-shift-ring/TRACK_COF_AGREEMENT.md": {
+    "bytes": 7222,
+    "sha256": "0619f702a875b61f06f8458f3004709e17cacd8bde150ab12acfa1d6cc26e504"
+  },
+  "tune-shift-ring/FIXED_STEP_RING_AUDIT.md": {
+    "bytes": 6967,
+    "sha256": "e1141d427e08eed7e1367b294513ee0d91d530c912aaf335240b9c1f43232a79"
+  },
+  "tune-shift-ring/RF_RING_STUDY.md": {
+    "bytes": 7909,
+    "sha256": "970e36d8935eb4ef160818b04e3a0003efd6f62a2f3d8763d663e1b7830c4052"
+  },
+  "tune-shift-ring/BARE_RING_MILESTONE.md": {
+    "bytes": 17874,
+    "sha256": "7ea158fc0b46486053550ecd6d5a6c4959e3ff926fd33e7c97f6ed001f01bf73"
+  },
+  "tune-shift-ring/PR553_CHECK.md": {
+    "bytes": 4386,
+    "sha256": "a16ed89d69b02c445ced78f2b5fe2ec934d183989ae93049f0d924973a239216"
+  },
+  "tune-shift-ring/EDGE_AVERAGING_MATH_AUDIT.md": {
+    "bytes": 9468,
+    "sha256": "2920e0e7da5b587713c0dcb2d8f7570660b3d7d85cd1aff5f6faefdfad03a546"
+  },
+  "tune-shift-ring/GAUSSIAN_BARE_STATE.md": {
+    "bytes": 686,
+    "sha256": "f374ff9694533f91a96faf154ff40e15eea7a412a226b67dc5ec104a5fc3ffb7"
+  },
+  "tune-shift-ring/SUBSET_BOUNDARY_ARC.md": {
+    "bytes": 4990,
+    "sha256": "af86431b618b8ee2b8b96a0e421357d988ce1be93435078de745906ce58f8962"
+  },
+  "tune-shift-ring/BOUNDARY_DT_PROPOSAL.md": {
+    "bytes": 2591,
+    "sha256": "0674def91a724e9a87aa935015bfe163caa7e79bb482dbf54c121ab978c246fa"
+  },
+  "tune-shift-ring/ELLIPSOID_BOOST_SENSITIVITY.md": {
+    "bytes": 4570,
+    "sha256": "3d9d615684ba43b3071e42d74001a761c38dce051f60864c0834b02108616402"
+  },
+  "tune-shift-ring/README.md": {
+    "bytes": 9555,
+    "sha256": "1bcd225ec83809e01841783518a8430e8fcde4e65f36f461703a3764350eafeb"
+  },
+  "tune-shift-ring/EDGE_AVERAGING_INVESTIGATION.md": {
+    "bytes": 5338,
+    "sha256": "a3cc16983c475fe206cde690fdf5e894d601a4637a554611d410c7cf8168eac8"
+  },
+  "tune-shift-ring/PARTICLE_BOUNDARY_PROPOSAL.md": {
+    "bytes": 7334,
+    "sha256": "96a38643a526ad0501e47dbbb805bf551d390ff64054848fe5f740f256e1694b"
+  },
+  "tune-shift-ring/LARGE_ELLIPSOID_BENCHMARK.md": {
+    "bytes": 6593,
+    "sha256": "326929f5b75e9bf01b451e89734be202fc2c9d9cbf6c12369f9e2a1dab209972"
+  },
+  "tune-shift-ring/ELLIPSOID.md": {
+    "bytes": 8419,
+    "sha256": "d9ae0ebaf083c77a05fd19aa1659d319695e432693dab774e83e42ca956bce1f"
+  },
+  "tune-shift-ring/BORIS_PIC_INTEGRATION.md": {
+    "bytes": 11721,
+    "sha256": "d35d8f5ccdf4b1bf8a1fcaf38e897ce951b5b678db1955c28944dce7edb500d0"
+  },
+  "tune-shift-ring/FROZEN_MIDPOINT_REPLAY_AUDIT.md": {
+    "bytes": 7030,
+    "sha256": "19d27866625d338552eee2cc8f5e57ed5fbe764bb0007e5604872f1d662c401f"
+  },
+  "tune-shift-ring/MATCHED_ELLIPSOID.md": {
+    "bytes": 13107,
+    "sha256": "169a33fd8f5751b11b475e10ff9ecb7a771101987c9968458ace9c9a801edba4"
+  },
+  "tune-shift-ring/PARTICLE_BOUNDARY_ARCHITECTURE.md": {
+    "bytes": 7702,
+    "sha256": "f6f46a423d87f1ad8f1ebcaae02813aaa4be6fb2791b3f0eafdf08ff30ea0756"
+  },
+  "tune-shift-ring/TEMPORAL_MONITOR_STUDY.md": {
+    "bytes": 7839,
+    "sha256": "d4192e175d88f6ea4dc613dde8df878d3a881990c7184e0d5aebff45360c0312"
+  },
+  "tune-shift-ring/SOURCE_BOOST_AUDIT.md": {
+    "bytes": 6046,
+    "sha256": "90b21401492a3ff778dece5a5fed3c44bf86d3ecaef6ed1674516ead1cb9490c"
+  },
+  "tune-shift-ring/BARE_TUNES_STATE.md": {
+    "bytes": 964,
+    "sha256": "cc63850596814f873417a0ec3bea82cc234a6ed7b49c78c5415bbaf59af7934e"
+  },
+  "tune-shift-ring/CYCLOTRON_GUARD.md": {
+    "bytes": 9203,
+    "sha256": "0ed3f353d22b30ab37c64d3b875177ba24a46ade8991a8c18750b1bd4cbc7e9b"
+  },
+  "tune-shift-ring/GAUSSIAN_BARE.md": {
+    "bytes": 5083,
+    "sha256": "96e414212b755c1c213a059581f4013f526e483a030ba60e9d0434df9d76b619"
+  },
+  "tune-shift-ring/BARE_TUNES.md": {
+    "bytes": 6397,
+    "sha256": "d52ebcb944310ad368f107507170e8db779ee3995c868534b98d23f02516da3a"
+  },
+  "tune-shift-ring/MATCHED_ELLIPSOID_STATE.md": {
+    "bytes": 7449,
+    "sha256": "73ff2537ef5dcefdf3b28b9011416d61b63d300cb8acbeb363d57ccd92c65482"
+  },
+  "dba-ring-cof-1/README.md": {
+    "bytes": 1241,
+    "sha256": "5490da1e951b9d7dedb52a2582bf46ea75bea0052b438c91a8fdb9db0dad2400"
+  },
+  "dba-cof-1/README.md": {
+    "bytes": 7466,
+    "sha256": "fbcd1c035109385a7a2a0c3b7bf769cf252a1a0869561f068074ff17b1497150"
+  }
+}

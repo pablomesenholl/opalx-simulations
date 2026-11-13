@@ -1,0 +1,1027 @@
+{
+  "tune-shift-ring/CHECKSUMS.sha256": [
+    {
+      "path": "./TASK_STATE.md",
+      "status": "missing"
+    },
+    {
+      "path": "./analysis/plot_analytic_vs_tracking.py",
+      "status": "mismatch"
+    },
+    {
+      "path": "./analysis/prepare_kv.py",
+      "status": "mismatch"
+    },
+    {
+      "path": "./analysis/run_ellipsoid.py",
+      "status": "mismatch"
+    },
+    {
+      "path": "./analysis/run_model.py",
+      "status": "mismatch"
+    },
+    {
+      "path": "./bare-cof.in",
+      "status": "mismatch"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/current_scan.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/envelope-0.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/envelope-1.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/envelope-2.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/envelope-3.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/envelopes.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/envelopes.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/source/kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/source/run_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/source/test_kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/summary.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/targets.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/tune_shift.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093048Z-2gln046i/tune_shift.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/current_scan.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/envelope-0.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/envelope-1.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/envelope-2.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/envelope-3.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/envelopes.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/envelopes.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/source/kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/source/run_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/source/test_kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/summary.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/targets.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/tune_shift.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-20260909T093201Z-0uc46lre/tune_shift.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-vs-tracking-o76md2gl/analytic.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-vs-tracking-o76md2gl/analytic_vs_tracking.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-vs-tracking-o76md2gl/analytic_vs_tracking.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/analytic-vs-tracking-o76md2gl/provenance.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-GBSgS6qA/bare-cof-orbit.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-GBSgS6qA/bare-cof.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-GBSgS6qA/bare-cof.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-GBSgS6qA/bare-cof.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-GBSgS6qA/comparison.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-GBSgS6qA/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-GBSgS6qA/provenance.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-GBSgS6qA/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-GBSgS6qA/timing.dat",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-lzzekti5/bare-cof-orbit.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-lzzekti5/bare-cof.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-lzzekti5/bare-cof.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-lzzekti5/bare-cof.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-lzzekti5/comparison.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-lzzekti5/provenance.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-lzzekti5/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-lzzekti5/timing.dat",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-mait47Gw/bare-cof.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-mait47Gw/bare-cof.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-mait47Gw/comparison.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-mait47Gw/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-mait47Gw/provenance.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/bare-proton-mait47Gw/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/ellipsoid-config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/ellipsoid.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/ellipsoid.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/frozen_fields.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/frozen_length_scan.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/no_sc_no_rf.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/sc_no_rf.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/sc_rf_cancel.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/sc_rf_opposite.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/bare-reference.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/ellipsoid_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/prepare_kv.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/run_ellipsoid.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/run_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/test_check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/test_ellipsoid_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/test_kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/source/test_kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-fhbk437d/summary.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/ellipsoid-config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/ellipsoid.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/ellipsoid.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/frozen_fields.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/frozen_length_scan.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/no_sc_no_rf.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/sc_no_rf.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/sc_rf_cancel.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/sc_rf_opposite.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/bare-reference.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/ellipsoid_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/prepare_kv.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/run_ellipsoid.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/run_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/test_check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/test_ellipsoid_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/test_kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/source/test_kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-jo7su93t/summary.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/ellipsoid-config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/ellipsoid.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/ellipsoid.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/frozen_fields.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/frozen_length_scan.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/no_sc_no_rf.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/sc_no_rf.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/sc_rf_cancel.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/sc_rf_opposite.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/bare-reference.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/ellipsoid_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/plot_analytic_vs_tracking.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/prepare_kv.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/run_ellipsoid.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/run_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/test_check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/test_ellipsoid_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/test_kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/source/test_kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/ellipsoid-l654_bm5/summary.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/distribution.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/kv-ring.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/kv-section.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/kv-section.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/kv-section.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/source/bare-reference.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/source/check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/source/kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/source/kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/source/prepare_kv.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/source/run_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/source/test_check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/source/test_kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-9wx04ifr/source/test_kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/distribution.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/kv-ring.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/kv-section.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/source/kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/source/kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/source/prepare_kv.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/source/run_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/source/test_kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-hg06mv5n/source/test_kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/config.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/distribution.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/kv-ring.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/kv-section.pdf",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/kv-section.png",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/kv-section.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/source/bare-reference.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/source/check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/source/kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/source/kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/source/prepare_kv.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/source/run_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/source/test_check_bare.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/source/test_kv_distribution.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/matched-kv-ikcpb_k9/source/test_kv_model.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-ovdjqu72/proton-track.h5",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-ovdjqu72/proton-track.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-ovdjqu72/provenance.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-ovdjqu72/reference.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-ovdjqu72/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/baseline-check.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/check_baseline.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/data/proton-track_3D.opal",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/data/proton-track_DesignPath.dat",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/data/proton-track_ElementPositions.py",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/data/proton-track_ElementPositions.sdds",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/data/proton-track_ElementPositions.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/proton-track.h5",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/proton-track.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/proton-track.stat",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/provenance.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/reference.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-vac8lq4z/timing.dat",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-yeutw1pq/proton-track.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-yeutw1pq/provenance.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-yeutw1pq/reference.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/proton-track-baseline-yeutw1pq/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./run_bare.sh",
+      "status": "mismatch"
+    }
+  ],
+  "dba-ring-cof-1/CHECKSUMS.sha256": [
+    {
+      "path": "./results/baseline-20260909/analytic/cell-slope-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/analytic/one-family-scan.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/analytic/ring-mechanical-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/analytic/ring-slope-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/analytic/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/analytic/summary.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/binary.sha256",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/git-revision.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/displaced/closed-orbit-orbit.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/displaced/closed-orbit.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/displaced/closed-orbit.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/displaced/cof.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/displaced/comparison.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/displaced/minus-analytic.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/displaced/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/displaced/timing.dat",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/displaced/tracked-slope-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/nominal/closed-orbit-orbit.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/nominal/closed-orbit.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/nominal/closed-orbit.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/nominal/cof.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/nominal/comparison.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/nominal/minus-analytic.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/nominal/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/nominal/timing.dat",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/nominal/tracked-slope-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/summary.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx/summary.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/baseline-20260909/opalx.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/analytic/cell-slope-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/analytic/one-family-scan.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/analytic/ring-mechanical-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/analytic/ring-slope-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/analytic/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/analytic/summary.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/binary.sha256",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/git-revision.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/displaced/closed-orbit.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/displaced/cof.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/displaced/comparison.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/displaced/minus-analytic.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/displaced/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/displaced/tracked-slope-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/nominal/closed-orbit.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/nominal/cof.in",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/nominal/comparison.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/nominal/minus-analytic.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/nominal/run.log",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/nominal/tracked-slope-map.txt",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/summary.csv",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx/summary.json",
+      "status": "missing"
+    },
+    {
+      "path": "./results/migration-20260909/opalx.log",
+      "status": "missing"
+    }
+  ],
+  "dba-cof-1/CHECKSUMS.sha256": []
+}

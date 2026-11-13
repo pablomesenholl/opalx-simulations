@@ -1,0 +1,21 @@
+OPALX 10-cell FODO observables summary
+==========================================
+Values use the first and last available .stat rows, not necessarily s=0 and s=20 m.
+Path length: 0.000919776 -> 7.35821 m
+Reference macroparticles: 10000
+Final macroparticles: 10000
+Lost: 0 (0%)
+
+Normalized rms emittance x: 0.192115 -> 0.27914 mm mrad (+45.299%)
+Normalized rms emittance y: 0.281419 -> 0.361306 mm mrad (+28.387%)
+RMS envelope x: 0.995283 -> 2.51465 mm (+152.657%)
+RMS envelope y: 0.980003 -> 3.30193 mm (+236.931%)
+rho(x,px): +0.829417 -> +0.768633
+rho(y,py): -0.727865 -> -0.981968
+
+Scientific interpretation:
+- Counts measure macroparticle deletion, not physical beam intensity losses unless
+  the deletion mechanism represents a specified physical aperture or interaction.
+- If losses occur, the displayed emittance/envelopes describe survivors only.
+- The current generator defaults to no aperture and disables BOUNDPDESTROY.
+- Verify the tracking log for unexpected deletion or premature termination.

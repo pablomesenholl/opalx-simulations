@@ -1,0 +1,443 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={DBA Ring Lattice: Hamiltonian{,} KV Benchmark{,} and AI Design},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{DBA Ring Lattice: Hamiltonian, KV Benchmark, and AI Design}
+\author{}
+\date{1 November 2026}
+
+\begin{document}
+\maketitle
+
+All file paths below are relative to the project root, one level above
+this TeX directory.
+
+\section{Synthetic ring Hamiltonian}\label{synthetic-ring-hamiltonian}
+
+This is a complete quadratic Hamiltonian for a specified synthetic
+linear machine. It is not an exact nonlinear magnetic-field Hamiltonian.
+Hard edges, paraxial motion, first-order momentum deviations and a
+static reference energy define the model. Fringe fields, chromatic
+nonlinearities, RF, radiation and errors are excluded. The DBA-like
+geometry is deliberately non-achromatic.
+
+\subsection{Canonical convention}\label{canonical-convention}
+
+Independent variable: reference arc length s {[}m{]}. Canonical state:
+
+\[
+\begin{aligned}
+\mathbf u&=(x,p_x,y,p_y,\zeta,\eta),\\
+p_x&=P_x/p_0,\qquad p_y=P_y/p_0,\\
+\zeta&=\beta_0c\left(\frac{s}{\beta_0c}-t\right)\quad[\mathrm m],\\
+\eta&=\frac{E-E_0}{\beta_0^2E_0}\quad\text{(dimensionless)}.
+\end{aligned}
+\]
+
+P denotes canonical transverse momentum; choose the usual ideal magnet
+gauge with zero transverse vector potential. Slopes equal normalized
+transverse momenta to linear order. eta equals relative momentum
+deviation dp/p0 only to first order. beta0 and gamma0 refer to 2.5 MeV
+protons. This is not OPALX's momentum normalization by mc; the
+corresponding on-momentum conversion is P\_x/(mc)=beta0\emph{gamma0}px.
+
+Positive \(\zeta\) means early arrival. Local x points outward in a
+bend, y is vertical. Positive curvature h bends the reference towards
+negative lab X at the entrance. The lab tangent in the X,Z plane is
+(sin(theta),cos(theta)), with theta'=-h. Entry and exit placements in
+\texttt{model/machine.json} use this convention, matching the copied
+baseline deck.
+
+The scaled, dimensionless Hamiltonian is
+
+\[
+\begin{aligned}
+H_{\mathrm{ext}}(\mathbf u;s)&=\frac{p_x^2+p_y^2}{2}
+ +\frac{k_x(s)x^2+k_y(s)y^2}{2}-h(s)x\eta+\frac{\eta^2}{2\gamma_0^2},\\
+x'&=p_x,&p_x'&=-k_xx+h\eta,\\
+y'&=p_y,&p_y'&=-k_yy,\\
+\zeta'&=-hx+\eta/\gamma_0^2,&\eta'&=0.
+\end{aligned}
+\]
+
+h has units m\^{}-1 and kx,ky have units m\^{}-2. H is piecewise
+constant in s through its coefficients; coordinates and canonical
+momenta remain continuous at hard edges. No thin edge kicks are applied.
+Use \texttt{u\textquotesingle{}=J*G*u}, with G the Hessian of H and
+J=diag(J2,J2,J2). The exact element map is exp(L\emph{J}G); ordered cell
+and ring maps are M\_cell=M\_B2 M\_D2 M\_Q M\_D1 M\_B1 and
+M\_ring=M\_cell\^{}6. An element's autonomous H is conserved within that
+element; the piecewise s-dependent H is not a global conserved scalar.
+The exact maps are symplectic, including dispersion and longitudinal
+coupling.
+
+\subsection{Cell definition}\label{cell-definition}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule\noalign{}
+Element & L {[}m{]} & h {[}m\^{}-1{]} & kx {[}m\^{}-2{]} & ky
+{[}m\^{}-2{]} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+B1 & pi/3 & 0.5 & 0.25 & 0 \\
+D1 & 1 & 0 & 0 & 0 \\
+Q & 0.2 & 0 & -2.84 & +2.84 \\
+D2 & 1 & 0 & 0 & 0 \\
+B2 & pi/3 & 0.5 & 0.25 & 0 \\
+\end{longtable}
+}
+
+Six cells give 30 elements, twelve 30-degree bends, total bending 2*pi,
+and circumference 25.76637061436 m. The proton OPALX deck uses K1=-2.84
+to implement these physical quadrupole coefficients. The electron
+historical benchmark uses the opposite OPALX K1 sign. Do not infer
+physical focusing from an OPALX K1 without its particle/charge
+convention.
+
+Bare full tunes are Qx=0.770107569133 and Qy=1.689536397020. The PR's
+principal one-turn eigenphases 0.229892431 and 0.310463603 are
+compatible with these values; they are not the full positive tunes. The
+model generator chooses cell phase in (0,2*pi) using the sign of M12 and
+multiplies by six. This branch is verified by the independent KV phase
+integral at the baseline. Local optimization stays near that branch; a
+general design with more than one oscillation per cell must unwrap phase
+along s independently. The periodic entrance dispersion is approximately
+9.337460094 m and zero slope. The machine has longitudinal drift, not
+longitudinal confinement.
+
+\subsection{Matched KV beam}\label{matched-kv-beam}
+
+For the solver comparison use eta=0 and zero momentum spread. An
+initially uniform coasting beam remains longitudinally uniform in the
+ideal model. Let a,b be edge radii {[}m{]}, a=2\emph{sigma\_x,
+b=2}sigma\_y. Geometric edge emittances \(\mathcal E_x,\mathcal E_y\)
+(Ex,Ey in the code) are four times geometric rms emittances; the
+baseline has rms emittances 3e-6 m rad. Current I is positive for the
+proton beam.
+
+\[
+\begin{aligned}
+I_A&=\frac{4\pi\epsilon_0m_pc^3}{e},&K&=\frac{2I}{I_A\beta_0^3\gamma_0^3},\\
+a''+k_xa-\frac{\mathcal E_x^2}{a^3}-\frac{2K}{a+b}&=0,\\
+b''+k_yb-\frac{\mathcal E_y^2}{b^3}-\frac{2K}{a+b}&=0.
+\end{aligned}
+\]
+
+For particles inside the uniform KV ellipse the collective transverse
+potential adds
+
+\[
+\begin{aligned}
+H_{\mathrm{sc}}&=-\frac{K}{a+b}\left(\frac{x^2}{a}+\frac{y^2}{b}\right),\\
+k_{x,\mathrm{eff}}&=k_x-\frac{2K}{a(a+b)},\\
+k_{y,\mathrm{eff}}&=k_y-\frac{2K}{b(b+a)}.
+\end{aligned}
+\]
+
+This is an interior test-particle mean-field Hamiltonian with
+self-consistently matched envelopes. It is not a quadratic potential
+outside the ellipse, not a sum of finite-particle pair interactions, and
+not a six-dimensional collective model with longitudinal space charge.
+Self-consistency is supplied by the periodic envelope equations, not by
+holding the zero-current beam sizes fixed as current rises. Additive
+functions of s do not change transverse motion.
+
+The KV distribution is a uniform shell in normalized four-dimensional
+transverse phase space. A filled 4D ball is a different distribution.
+Its invariant is
+
+\[
+\left(\frac{x}{a}\right)^2+
+\left(\frac{ap_x-a'x}{\mathcal E_x}\right)^2+
+\left(\frac{y}{b}\right)^2+
+\left(\frac{bp_y-b'y}{\mathcal E_y}\right)^2=1.
+\]
+
+Full positive incoherent tunes follow Qx=6/(2\emph{pi)}integral\_cell
+Ex/a\^{}2 ds, and similarly for y. The self-field is analytic; periodic
+envelope matching and phase integration are numerical. Distinguish these
+particle tunes from centroid tunes and envelope-mode frequencies. Finite
+amplitudes/curvature in an OPALX field tracker can depart from this
+paraxial locally straight space-charge reference; mesh/time convergence
+alone does not remove that model difference.
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://indico.cern.ch/event/221441/contributions/1524769/attachments/360572/502106/SpaceCharge_Modelling.pdf}{CERN
+  CAS: modelling with space charge, C. Prior}, for KV envelope and
+  perveance conventions.
+\item
+  \href{https://s3.cern.ch/inspire-prod-files-7/74c88492a8d6a790563d145198c4813d}{Particle
+  tracking in circular accelerators using the exact Hamiltonian}, for
+  canonical accelerator Hamiltonian context. The explicit quadratic
+  convention and signs used here are defined above and checked against
+  closed-form sector maps.
+\end{itemize}
+
+\section{KV reference for FFT2D5}\label{kv-reference-for-fft2d5}
+
+The first deliverable is an independent reference, not yet an end-to-end
+OPALX FFT2D5 validation. \texttt{tune-shift-ring/analysis/run\_model.py}
+regenerates immutable current scans, charge normalization, periodic
+envelopes, tune predictions, stability diagnostics and local
+electric-field gradients. \texttt{fft2d5\_reference.json} in each new
+result directory records numerical comparison targets.
+
+\subsection{Physical comparison}\label{physical-comparison}
+
+Use 2.5 MeV protons, 3 micrometre geometric rms emittances in both
+planes, zero momentum spread, no RF, no pipe images and open transverse
+boundaries. Match the beam separately at each charge. The coasting
+reference is uniform longitudinally. In the current OPALX
+implementation, FFT2D5 uses lab-frame line charge and open transverse
+slice solves. Its longitudinal-field mode must be None for a controlled
+purely transverse comparison (C++ enum
+\texttt{FFT2D5LongitudinalFieldMode::None}; verify the input spelling
+when building a run deck).
+
+Charge normalization is determined by line density, not by an arbitrary
+bunch charge:
+
+\[
+\begin{aligned}
+\lambda&=\frac{I}{\beta_0c},&N_{\mathrm{ring}}&=\frac{\lambda C}{e},\\
+Q_{\mathrm{ring}}&=\lambda C,&Q_{\mathrm{segment}}&=\lambda L_{\mathrm{segment}},\\
+q_{\mathrm{macro}}&=\frac{Q_{\mathrm{segment}}}{N_{\mathrm{macro}}}.
+\end{aligned}
+\]
+
+A full coasting ring needs a spatial distribution all around the closed
+path with the appropriate local matched covariance at each s. A finite
+segment requires verified uniform interior slices and appropriate
+longitudinal handling. A zero-length observation section
+(\texttt{kv-section.txt}) cannot represent a charged coasting beam. Do
+not replace the coasting model with an all-open isolated ellipsoid.
+Full-ring longitudinal wrapping and the path seam must be verified
+before claiming a ring comparison.
+
+At each cell position the analytic lab electric field inside the ellipse
+is
+
+\[
+\begin{aligned}
+E_x&=\frac{\lambda x}{\pi\epsilon_0a(a+b)},&
+E_y&=\frac{\lambda y}{\pi\epsilon_0b(a+b)},\\
+\mathbf B&=\frac{\beta_0}{c}\,\hat{\mathbf t}\times\mathbf E,&
+\mathbf F_\perp&=\frac{e\mathbf E_\perp}{\gamma_0^2}.
+\end{aligned}
+\]
+
+The electric field already uses lab normalization; do not add another
+gamma boost. The force reduction is from the magnetic field.
+Equivalently,
+e\emph{(E\_x/x)/(p0}beta0\emph{c}gamma0\^{}2)=2*K/{[}a*(a+b){]}, which
+ties a field check directly to the Hamiltonian.
+
+\subsection{Baseline operating points}\label{baseline-operating-points}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1304}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+I {[}mA{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Qx
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Qy
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Delta Qx
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Delta Qy
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Role
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 0.770108 & 1.689536 & 0 & 0 & Bare optics \\
+4.748770 & 0.623940 & 1.589536 & -0.146167 & -0.1 & First collective
+comparison \\
+10.399311 & 0.484005 & 1.489536 & -0.286102 & -0.2 & Main
+substantial-shift reference \\
+17.402677 & 0.359252 & 1.389536 & -0.410855 & -0.3 & Envelope-unstable
+stress case \\
+\end{longtable}
+}
+
+At the main point Q\_ring=12.26826245 nC and N\_ring=7.65724714e10
+protons. Entrance rms sizes are 6.042810 mm and 2.480302 mm. The last
+operating point has an envelope multiplier about 1.069761 per cell and
+is not a stable matched-beam benchmark.
+
+\subsection{Validation sequence}\label{validation-sequence}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Reconstruct the bare ring and establish convergence of the
+  particle/reference orbit and zero-charge tunes in OPALX. Historical
+  tracking reports describe old source revisions and do not establish
+  current behavior.
+\item
+  At a fixed matched section compare FFT2D5 interior field gradients and
+  net transverse force against the formulas above. Check charge
+  deposition and line density as well as fields. Repeat at a curved
+  section to expose path/coordinate errors.
+\item
+  Transport the correctly normalized matched source through one cell.
+  Compare envelopes and projected moments against the reference at every
+  element boundary.
+\item
+  Track stable coasting operating points over many turns. Measure
+  individual-particle tunes with a consistent observation plane and
+  unfolded branches, not the centroid or only a principal FFT peak.
+  Include the zero-charge run at the same numerical settings.
+\item
+  Quantify sensitivity to timestep, transverse mesh spacing/domain,
+  slice spacing, source particle count and spectral observation length.
+  Keep physical parameters fixed and report both absolute tune error and
+  error in Delta Q. Establish tolerances from this convergence evidence
+  rather than choosing a pass threshold now.
+\end{enumerate}
+
+Parameter studies use one MPI rank. Dedicated single-/multi-rank
+consistency checks belong to the eventual solver validation, not these
+serial reference calculations. No OPALX or MPI solver validation has
+been run for this standalone package yet.
+
+\section{AI task: reconstruct, then
+optimize}\label{ai-task-reconstruct-then-optimize}
+
+Provide an AI with \texttt{model/cell.json} and the Hamiltonian section
+of this document. Keep \texttt{model/machine.json} as the evaluator's
+reference output if testing independent reconstruction.
+
+\subsection{Stage 1: reconstruct the
+machine}\label{stage-1-reconstruct-the-machine}
+
+Read the declared canonical variables and quadratic Hamiltonian. Derive
+the six Hamilton equations, generate the exact map of each element,
+compose a cell in beam order, and repeat it six times. Integrate the
+reference geometry and output all 30 placements, the cell/ring maps,
+circumference, bend sum, dispersion, full tunes and symplectic
+residuals. Do not infer full tunes from principal one-turn eigenphases
+alone.
+
+Use the proton sign convention. At zero current reproduce the
+independent envelope phase integrals. Explain the distinction between a
+full quadratic machine model and exact nonlinear field tracking.
+
+The supplied baseline evaluator is \texttt{model/machine.py}; physics
+tests are in \texttt{tests/test\_machine.py}. Baseline targets:
+25.76637061436 m circumference, 2*pi total bend, full tunes
+(0.770107569133,1.689536397020), and entrance dispersion (9.337460094
+m,0). Tests use near-roundoff tolerances for exact maps and geometry and
+2e-10 for comparison with numerically integrated envelope phases. These
+tolerances are model checks, not PIC acceptance criteria.
+
+\subsection{Stage 2: optimize the cell}\label{stage-2-optimize-the-cell}
+
+For a first explicit demonstration, choose full tune targets (0.8,1.7).
+These are illustrative targets, not a requested operating machine or an
+optimal physics choice. Allow the physical quadrupole coefficient and
+both equal drift lengths to vary. Hold particle, energy, bend
+radii/angles, quadrupole length and cell count fixed. Require positive
+lengths, transverse cell stability, symplectic maps, and closed
+reference geometry. Circumference is allowed to change. If circumference
+is fixed, these two knobs no longer generally permit two arbitrary tune
+targets; add a justified degree of freedom or change the objective.
+
+Export the new cell specification and full machine, plus a KV
+configuration derived from exactly the same element coefficients.
+Rematch the KV beam and recompute the tune-shift-versus-charge curve for
+each proposed design. Reject envelope-unstable points as stable working
+references. Optimization of bare tunes alone does not optimize
+collective stability or machine robustness.
+
+\texttt{model/optimize.py} is a deterministic local two-knob reference
+optimizer, useful for evaluating an AI's proposal. It is not evidence
+that AI independently designed a machine. It deliberately fails when
+local matching encounters an unstable/nonphysical cell or cannot
+converge; it is not a global search over tune branches.
+
+The worked result in \texttt{designs/demo-qx0.8-qy1.7/} reconstructs a
+complete machine with full tunes (0.8,1.7). Its compatible
+\texttt{kv-config.json} can be supplied to the analytic scan runner.
+Compare proposals on achieved optics, valid geometry, collective
+stability, reproducibility and stated tradeoffs, rather than
+plausible-looking element lists.
+
+\end{document}

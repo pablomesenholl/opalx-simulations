@@ -1,0 +1,183 @@
+# Coasting KV tune shift in a compact ring
+
+The isolated-bunch extension, KV validation status and trial buncher results are
+documented in [ELLIPSOID.md](ELLIPSOID.md). Run it with `./run_ellipsoid.sh`.
+
+Self-contained Python benchmark for a 2.5 MeV proton beam in a six-cell,
+25.7663706144 m ring. It solves periodic KV envelopes and the associated
+incoherent particle tunes. The field formula is analytic; matching and phase
+integration are numerical. The analytic runner does not run OPALX; the separate
+bare-orbit runner validates the proton lattice with OPALX.
+
+Run from any directory:
+
+```sh
+/Users/adelmann/git/opalx/sandbox/Regression-Tests/tune-shift-ring/run.sh
+```
+
+The runner uses `~/.venv-h6`, runs unit tests, then creates a fresh directory in
+`results/`. Set `OPALX_PYTHON` to override Python. NumPy, SciPy, pandas and
+Matplotlib are required. Execution is serial; MPI is not invoked. Future OPALX
+studies will use one rank. No stochastic sampling is used in this model.
+
+## Configuration and outputs
+
+`config.json` is the authoritative input: kinetic energy, **geometric rms**
+emittances, cell count, hard-edge lengths/focusing and target vertical shifts.
+Default rms emittances are 3 micrometres in each plane; momentum spread is zero.
+
+The ordered cell is B–D–Q–D–B, with 2 m bend radius and 30-degree bends.
+The quadrupole focuses vertically, with physical coefficients
+`kx=-2.84 m^-2`, `ky=+2.84 m^-2`. These are coefficients of the equations
+`x''+kx*x=0`, `y''+ky*y=0`, **not an OPALX K1 assignment**. A proton OPALX
+deck must verify charge/sign conventions when translating these coefficients.
+The 2.5 MeV proton rigidity is 0.2286218828 T m; the dipole field magnitude
+is 0.1143109414 T. The normalized focusing preserves the existing analytic
+ring geometry/optics. This is a synthetic DBA-like lattice, not an achromat
+match and not a reproduction of IOTA.
+
+Each run contains:
+
+- `config.json`, `source/`, `run.log`: input, source snapshot and provenance.
+- `current_scan.csv`: current, line population, ring population, tunes, sizes,
+  matched initial envelopes, periodic residuals and envelope stability.
+- `targets.csv`: the requested vertical-shift operating points.
+- `envelope-*.csv`: rms sizes and accumulated phases over one cell; repeat six
+  times for the full ring, adding the phase advance at each cell.
+- `summary.json`: global parameters and numerical convergence checks.
+- `tune_shift.png/pdf`, `envelopes.png/pdf`: figures.
+
+## Model conventions
+
+The model uses direct transverse space charge in an isolated, locally straight,
+coasting beam with constant current magnitude I. It neglects image forces,
+longitudinal forces, momentum spread, acceleration, RF and cooling. Bends
+include horizontal curvature focusing. There is no aperture or loss model.
+
+Let a,b be the KV edge radii in metres, so sigma_x=a/2 and sigma_y=b/2.
+The geometric edge emittances are E_x=4 epsilon_rms,x and E_y=4 epsilon_rms,y,
+in metre-radians. With s in metres and prime denoting d/ds:
+
+```text
+K = 2 I / (I_A beta_rel^3 gamma^3)
+I_A = 4 pi epsilon_0 m_p c^3 / e
+a'' + kx(s) a - E_x^2/a^3 - 2K/(a+b) = 0
+b'' + ky(s) b - E_y^2/b^3 - 2K/(a+b) = 0
+```
+
+K is dimensionless. The periodic solution matches a,a',b,b' after one cell.
+It supplies the linear internal particle focusing:
+
+```text
+kx_eff = kx - 2K/[a(a+b)]
+ky_eff = ky - 2K/[b(a+b)]
+Qx = cells/(2 pi) integral_cell E_x/a(s)^2 ds
+Qy = cells/(2 pi) integral_cell E_y/b(s)^2 ds
+Delta Q = Q(I) - Q(0)
+```
+
+These phase integrals yield full positive tunes without folding eigenphases.
+External focusing stays fixed as current changes; the beam is rematched.
+The constant-focusing round limit is an exact independent test:
+
+```text
+a^2 = [K + sqrt(K^2 + 4 k E^2)]/(2 k)
+depressed wavenumber = E/a^2
+```
+
+A KV distribution is a shell in normalized four-dimensional transverse phase
+space; it is not a filled 4D waterbag. For subsequent particle initialization,
+the matched covariance has <x^2>=a^2/4, <xx'>=aa'/4, and
+<x'^2>=(a'^2+E_x^2/a^2)/4, with analogous vertical expressions. Distribute
+particles around the closed orbit. The number line density is I/(e beta_rel c),
+and the total ring population is this density times circumference. A finite
+OPALX simulation segment must carry its own length times this line density,
+not automatically the full-ring charge.
+
+Theory reference: [Franchetti, CERN CAS lecture, slides 46–70](https://cas.web.cern.ch/sites/default/files/lectures/prague-2014/franchettisc.pdf).
+This documents the experiment's implemented conventions. The configured local
+physics-manual repository was unavailable at setup time.
+
+## Results and validation
+
+| Coasting current [mA] | Qx | Qy | Delta Qx | Delta Qy | Linear envelope stability |
+|---:|---:|---:|---:|---:|---|
+| 0 | 0.770108 | 1.689536 | 0 | 0 | Stable |
+| 4.748770 | 0.623940 | 1.589536 | -0.146167 | -0.100000 | Stable |
+| 10.399311 | 0.484005 | 1.489536 | -0.286102 | -0.200000 | Stable |
+| 17.402677 | 0.359252 | 1.389536 | -0.410855 | -0.300000 | Unstable |
+
+Use **10.399311 mA** as the main substantial-shift benchmark. Its initial rms
+sizes are 6.042810 mm horizontally and 2.480302 mm vertically; total ring
+population is 7.65725e10 protons. These are analytic-model predictions.
+
+The largest envelope Floquet multiplier is approximately one for the first
+three targets, but **1.069761 per cell** for the last. A periodic solution can
+exist while being unstable to envelope perturbations. The last target is a
+stress case, not a stable matched-beam tracking reference. This stability test
+addresses linear envelope modes only: it does not establish freedom from all
+kinetic modes, imperfection-driven resonances or losses. The 10.4 mA tunes lie
+near half-integers, so magnet errors may matter in later tracking studies.
+
+Seven unit tests cover proton units, exact maps and Twiss functions, the
+zero-current ring, exact constant focusing, weak-current and similarity scaling,
+tighter integration, independent envelope variational derivatives, and direct
+particle-matrix phase agreement. All tests avoid OPALX execution. Integration
+uses DOP853 with exact element boundaries. Target tune changes under 100-fold
+tighter relative integration tolerance are below 6e-12; scaled periodic closure
+residuals are below 5e-13 in the initial scan. The solver acceptance thresholds
+are 2e-8 for scaled closure and 1e-7 for the run's tune convergence check; these
+are conservative rejection thresholds, not claimed physical accuracy.
+
+Next stage: validate bare OPALX multi-turn tracking, establish a compatible
+coasting/local-slice space-charge treatment, then initialize a matched KV source
+and compare individual-particle tunes and envelopes. A single particle or the
+bunch centroid cannot provide this incoherent collective tune-shift measurement.
+
+## Proton lattice and sampled KV distribution
+
+`bare-cof.in` now implements the proton lattice. Its quadrupoles use **K1=-2.84**,
+which preserves the chosen focusing after changing the charge sign from electrons
+to protons. Positions and bend angles are unchanged. The proton momentum is
+0.068539116183 GeV/c; normalized momentum p/(m_p c)=0.073048230844.
+
+The single-rank DOP853 closed-orbit calculation converges at (0,0,0,0), with
+horizontal residual 8.44e-14 m. Its full tunes, after assigning the integer and
+complement branches from the analytic cell phases, are
+**0.770107568476 / 1.689536396825**. Differences from analytic optics are
+−6.52e-10 / −1.95e-10. This verifies a one-turn linearization about the closed
+orbit; it does not resolve the earlier PARALLEL multi-turn tracker issues.
+
+Reproduce that check with `./run_bare.sh`. The binary can be selected with
+`OPALX_BINARY`. Archived output and binary provenance are in
+`results/bare-proton-lzzekti5/`. `analysis/bare-reference.json` is a copy of that
+COF JSON used as a unit-test fixture for the comparison/acceptance code.
+
+Generate the matched distribution with:
+
+```sh
+~/.venv-h6/bin/python analysis/prepare_kv.py
+```
+
+This generates **65,536 macroparticles**, seed **546544**, targeting Delta Qy=-0.2.
+Signed and cyclic symmetry within blocks of 64 gives exactly centered samples
+and exact transverse second moments up to roundoff, while preserving the KV
+shell. Each transverse projection has uniform elliptical density. The sampled
+geometric rms emittances are 3.000000 micrometres in both planes.
+
+- `kv-section.txt` is a FROMFILE-formatted **observation-plane section**, with
+  x,px,y,py,z,pz in metres and p/(m_p c). All z=0; do not assign it finite charge
+  and launch it as a 3D PIC bunch. It records the transverse matched distribution.
+- `matched-kv.json` records matching, moments, charge normalization and checksums.
+- Each fresh `results/matched-kv-*/` contains both these files, source snapshots,
+  phase-space plots and `kv-ring.csv`. The latter samples 1024 equally spaced
+  longitudinal slice centers with 64 matched transverse particles per slice.
+  Its s,x,x′,y,y′ are **local ring coordinates**, not global Cartesian coordinates.
+  Each particle has charge 1.872e-13 C approximately; the entire ring has
+  12.26826245 nC, corresponding to 7.65724714e10 protons.
+
+The current OPALX `FieldSolverCmd::constructBCHandler` rejects mixed boundary
+conditions, including open/open/periodic. Thus these files establish the matched
+coasting initial conditions, but a compatible solver/coordinate treatment is
+still required before self-consistent coasting tracking. Replacing this with an
+all-open finite bunch or all-periodic transverse box would change the model.

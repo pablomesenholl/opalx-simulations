@@ -1,0 +1,9 @@
+{
+  "critical_values_retained": 23,
+  "unique_labels": 30,
+  "references_resolved": 23,
+  "pages_visually_inspected": 7,
+  "compile_warnings": 0,
+  "source_sha256": "c78eb3a6bc5798ac2cf0def824930f64f27c9fd329ecc91cf87503ef2c950a78",
+  "pdf_sha256": "d6439fb52a74d62bc4c28e872f4be503a45ac95fdbb14b762ee454a0d8bf121e"
+}
